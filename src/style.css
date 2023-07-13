@@ -4,6 +4,10 @@
   padding: 0;
   box-sizing: border-box;
 }
+ol,
+ul {
+  list-style: none;
+}
 *:before,
 *:after {
   box-sizing: border-box;
@@ -43,12 +47,37 @@ body {
 .globalMain {
 }
 .siteList {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin: 20px 20px;
+}
+.siteList > li {
+  margin-bottom: 10px;
 }
 .siteList .site {
+  width: 160px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 20px 0;
 }
 .siteList .site > .logo {
+  width: 64px;
+  height: 64px;
+  font-size: 64px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .siteList .site > .link {
+  margin-top: 4px;
+  font-size: 14px;
 }
 .siteList .addButton {
+  width: 160px;
 }
