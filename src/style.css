@@ -1,12 +1,45 @@
+/*css reset,下面的是伪元素reset*/
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
 body {
-  border: 1px solid red;
+  background-color: #eee;
 }
+
 .globalHeader {
+  margin: 20px; /*居中显示：上下左右都是20px*/
+
+  /*让输入框靠左，搜索靠右：flex布局*/
+  display: flex;
+  justify-content: space-around;
 }
+
 .globalHeader > input {
+  border: 1px solid #ddd; /*input默认有border所以需要改*/
+  width: 100%; /*左右宽度最大 */
+  margin-right: 10px;
+  height: 40px;
+  padding: 0 10px; /*输入框内左右间隔20px*/
+  border-radius: 4px; /*加圆角*/
 }
+
 .globalHeader > button {
+  white-space: nowrap; /*搜索里面的字不换行*/
+  padding: 0 27px;
+  border: none;
+  border-radius: 4px;
+  background-color: #0282b9;
+  color: white;
+  font-size: 16px;
 }
+
 .globalMain {
 }
 .siteList {
