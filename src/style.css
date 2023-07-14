@@ -78,6 +78,27 @@ body {
   margin-top: 4px;
   font-size: 14px;
 }
+
 .siteList .addButton {
+  border: 1px solid #ddd;
+  background: white;
   width: 160px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 20px 0;
+}
+.siteList .addButton .text {
+  margin-top: 4px;
+  font-size: 14px;
+}
+.siteList .addButton .icon {
+  width: 64px;
+  height: 64px;
+}
+.siteList .addButton .iconWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
