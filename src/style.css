@@ -12,6 +12,14 @@ ul {
 *:after {
   box-sizing: border-box;
 }
+a {
+  color: inherit;
+  text-decoration: none;
+}
+img {
+  max-width: 100%;
+  max-height: 100%;
+}
 
 body {
   background-color: #eee;
@@ -19,13 +27,14 @@ body {
 
 .globalHeader {
   margin: 20px; /*居中显示：上下左右都是20px*/
+}
 
-  /*让输入框靠左，搜索靠右：flex布局*/
+.searchForm {
   display: flex;
   justify-content: space-around;
 }
-
-.globalHeader > input {
+/*让输入框靠左，搜索靠右：flex布局*/
+.searchForm > input {
   border: 1px solid #ddd; /*input默认有border所以需要改*/
   width: 100%; /*左右宽度最大 */
   margin-right: 10px;
@@ -34,7 +43,7 @@ body {
   border-radius: 4px; /*加圆角*/
 }
 
-.globalHeader > button {
+.searchForm > button {
   white-space: nowrap; /*搜索里面的字不换行*/
   padding: 0 27px;
   border: none;
