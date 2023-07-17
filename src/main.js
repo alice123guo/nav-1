@@ -6,5 +6,17 @@ $('.addButton')
             url = "https://"+url
             // alert("请输入以http开头的网址")
             console.log(url)
-        }4
+        }
+        const $siteList = $(".siteList")//先找到siteList
+        console.log($siteList)///jQuery返回的是一个API 
+        const $lastLi = $siteList.find('li.last')
+        const $li = $(` <li>
+          <a href="${url}">
+            <div class="site">
+              <div class="logo">${url[0]}</div>
+              <div class="link">${url}</div>
+            </div>
+          </a>
+        </li>`)
+        .insertBefore($lastLi)
     })
