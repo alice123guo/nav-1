@@ -2,25 +2,27 @@
 const $siteList = $(".siteList")
 const $lastLi = $siteList.find('li.last')
 
+const x = localStorage.getItem('x')
+const xObject = JSON.parse(x)
 
-const hashMap = [
+const hashMap = xObject || [
   {logo:'A',logoType:'text',url:'https://www.acfun.cn'},
   {logo:'./images/bilibili.svg',logoType:'image',url:'https://www.bilibili.com'},
   {logo:'./images/百度.svg',logoType:'image',url:'https://www.baidu.com'}
 ]
-
-hashMap.forEach(node=>{
-  const $li = $(`
-        <li>
-          <a href="${node.url}">
-            <div class="site">
-              <div class="logo">${node.logo[0]}</div>
-              <div class="link">${node.url}</div>
-            </div>
-          </a>
-        </li>
-  `).insertBefore($lastLi)//
-})
+const render = ()=>{
+  $siteList.find("li:not(.last)").remove()
+  hashMap.forEach(node=>{
+    const $li = $(`<li>
+            <a href="${node.url}">
+              <div class="site">
+                <div class="logo">${node.logo[0]}</div>
+                <div class="link">${node.url}</div>
+              </div>
+            </a>
+          </li>`).insertBefore($lastLi)})
+}
+render()
 
 $('.addButton')
     .on('click',()=>{
@@ -29,18 +31,16 @@ $('.addButton')
         if(url.indexOf("http")!==0){
             url = "https://"+url
             // alert("请输入以http开头的网址")
-            console.log(url)
-        }
-        // const $siteList = $(".siteList")//先找到siteList
-        // console.log($siteList)///jQuery返回的是一个API 
-        // const $lastLi = $siteList.find('li.last')
-        const $li = $(` <li>
-          <a href="${url}">
-            <div class="site">
-              <div class="logo">${url[0]}</div>
-              <div class="link">${url}</div>
-            </div>
-          </a>
-        </li>`)
-        .insertBefore($lastLi)
+            console.log(url)};
+
+        hashMap.push({logo:url[0],logoType:'text',url:url});
+        render();
     })
+
+
+    // 当关闭页面的时候，把当前的hashMap存在x里面，下次进来的时候会保存
+window.onbeforeunload = ()=>{
+  console.log('页面关闭')
+  const string = JSON.stringify(hashMap)
+  localStorage.setItem('x',string) 
+}
