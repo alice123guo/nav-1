@@ -10,6 +10,15 @@ const hashMap = xObject || [
   {logo:'./images/bilibili.svg',logoType:'image',url:'https://www.bilibili.com'},
   {logo:'./images/百度.svg',logoType:'image',url:'https://www.baidu.com'}
 ]
+
+//简化URL显示
+const simplifyUrl = (url)=>{
+  return url.replace('https://','')
+            .replace('http://','')
+            .replace('www.','')
+}
+
+
 const render = ()=>{
   $siteList.find("li:not(.last)").remove()
   hashMap.forEach(node=>{
@@ -17,7 +26,7 @@ const render = ()=>{
             <a href="${node.url}">
               <div class="site">
                 <div class="logo">${node.logo[0]}</div>
-                <div class="link">${node.url}</div>
+                <div class="link">${simplifyUrl(node.url)}</div>
               </div>
             </a>
           </li>`).insertBefore($lastLi)})
