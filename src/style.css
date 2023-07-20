@@ -82,7 +82,11 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+
+  /* 所有字母变成大写 */
+  text-transform: uppercase;
 }
+
 .siteList .site > .link {
   margin-top: 4px;
   font-size: 14px;

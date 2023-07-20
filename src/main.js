@@ -7,8 +7,8 @@ const xObject = JSON.parse(x)
 
 const hashMap = xObject || [
   {logo:'A',logoType:'text',url:'https://www.acfun.cn'},
-  {logo:'./images/bilibili.svg',logoType:'image',url:'https://www.bilibili.com'},
-  {logo:'./images/百度.svg',logoType:'image',url:'https://www.baidu.com'}
+  {logo:'B',logoType:'text',url:'https://www.bilibili.com'},
+  {logo:'B',logoType:'text',url:'https://www.baidu.com'}
 ]
 
 //简化URL显示
@@ -25,7 +25,7 @@ const render = ()=>{
     const $li = $(`<li>
             <a href="${node.url}">
               <div class="site">
-                <div class="logo">${node.logo[0]}</div>
+                <div class="logo">${node.logo}</div>
                 <div class="link">${simplifyUrl(node.url)}</div>
               </div>
             </a>
@@ -42,12 +42,12 @@ $('.addButton')
             // alert("请输入以http开头的网址")
             console.log(url)};
 
-        hashMap.push({logo:url[0],logoType:'text',url:url});
+        hashMap.push({logo:simplifyUrl(url)[0].toUpperCase(),logoType:'text',url:url});
         render();
     })
 
 
-    // 当关闭页面的时候，把当前的hashMap存在x里面，下次进来的时候会保存
+    // 当关闭页面的时候，把当前的hashMap存在x里面，下次进来的时候会自动保存
 window.onbeforeunload = ()=>{
   console.log('页面关闭')
   const string = JSON.stringify(hashMap)
