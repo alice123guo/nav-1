@@ -16,20 +16,39 @@ const simplifyUrl = (url)=>{
   return url.replace('https://','')
             .replace('http://','')
             .replace('www.','')
+            .replace(/\/.*/,'')
 }
 
 
 const render = ()=>{
   $siteList.find("li:not(.last)").remove()
-  hashMap.forEach(node=>{
+  hashMap.forEach((node,index)=>{
+    console.log(index)
     const $li = $(`<li>
-            <a href="${node.url}">
               <div class="site">
                 <div class="logo">${node.logo}</div>
                 <div class="link">${simplifyUrl(node.url)}</div>
+                <div class="close">
+                  <svg class="icon"><use xlink:href="#icon-close"></use></svg>
+                </div>
+
               </div>
-            </a>
-          </li>`).insertBefore($lastLi)})
+          </li>`).insertBefore($lastLi)
+
+    //因为a标签没办法再加一个关闭按钮，点关闭按钮总是跳转所以直接不用,改用JS控制
+    $li.on('click',()=>{
+      window.open(node.url)
+
+    })
+
+    //阻止冒泡，然后关闭按钮生效
+    $li.on('click','.close',(e)=>{
+      e.stopPropagation()
+      console.log(hashMap)
+      hashMap.splice(index,1)//根据索引index开始删，删除一个数据
+      render()//删除以后必须渲染
+    })  
+  })
 }
 render()
 

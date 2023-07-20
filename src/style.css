@@ -74,6 +74,8 @@ body {
   border: 1px solid #ddd;
   border-radius: 4px;
   padding: 20px 0;
+
+  position: relative;
 }
 .siteList .site > .logo {
   width: 64px;
@@ -91,7 +93,11 @@ body {
   margin-top: 4px;
   font-size: 14px;
 }
-
+.siteList .site > .close {
+  position: absolute;
+  top: 5px;
+  right: 10px;
+}
 .siteList .addButton {
   border: 1px solid #ddd;
   background: white;
