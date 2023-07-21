@@ -72,3 +72,17 @@ window.onbeforeunload = ()=>{
   const string = JSON.stringify(hashMap)
   localStorage.setItem('x',string) 
 }
+
+
+
+//键盘事件：在页面输入a就可以打开acfun.com等
+$(document).on('keypress',(e)=>{
+  console.log(e.key)//打印出按下的是哪个键
+
+  const {key} = e //这是全写语法：const key = e.key  
+  for(let i = 0;i<hashMap.length;i++){
+    if(hashMap[i].logo.toLowerCase()===key){//toLowerCase转成小写
+      window.open(hashMap[i].url)
+    }
+  }
+})
