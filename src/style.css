@@ -33,6 +33,19 @@ body {
   display: flex;
   justify-content: space-around;
 }
+
+/*媒体查询,页面宽度小于500的不管,页面大于500的时候搜索栏最宽为400px*/
+@media (min-width: 500px) {
+  .searchForm {
+    max-width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .globalHeader {
+    margin: 60px auto 60px;
+  }
+}
+
 /*让输入框靠左，搜索靠右：flex布局*/
 .searchForm > input {
   border: 1px solid #ddd; /*input默认有border所以需要改*/
@@ -52,17 +65,29 @@ body {
   color: white;
   font-size: 16px;
 }
-
+/*pc端设置居中*/
 .globalMain {
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
 }
 .siteList {
   display: flex;
-  justify-content: space-between;
+  /* justify-content: space-between;用负margin */
   flex-wrap: wrap;
   margin: 20px 20px;
 }
+
+@media (min-width: 500px) {
+  .siteList {
+    margin-left: 0;
+    margin-right: -25px;
+  }
+}
+
 .siteList > li {
   margin-bottom: 10px;
+  margin-right: 25px;
 }
 .siteList .site {
   width: 160px;
