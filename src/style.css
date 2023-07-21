@@ -30,6 +30,7 @@ body {
 }
 
 .searchForm {
+  cursor: n-resize;
   display: flex;
   justify-content: space-around;
 }
@@ -101,6 +102,9 @@ body {
   padding: 20px 0;
 
   position: relative;
+
+  /* 鼠标变成一个手的形状 */
+  cursor: pointer;
 }
 .siteList .site > .logo {
   width: 64px;
@@ -122,7 +126,16 @@ body {
   position: absolute;
   top: 5px;
   right: 10px;
+  /* 鼠标在这里的时候不是手的形状 */
+  cursor: auto;
+  /*鼠标移开不显示X号按钮*/
+  display: none;
 }
+/* 鼠标浮上显示关闭按钮 */
+.siteList .site:hover > .close {
+  display: block;
+}
+
 .siteList .addButton {
   border: 1px solid #ddd;
   background: white;
